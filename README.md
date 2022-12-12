@@ -1,4 +1,5 @@
-# brazilian-input-validator-library
+# brazilian-input-validator-library [![](https://jitpack.io/v/gustavodahora/brazilian-input-validator-library.svg)](https://jitpack.io/#gustavodahora/brazilian-input-validator-library)
+
 A Validator for inputs from Brazil Official registers
 At this moment, we finished the setup for a validation at CPF input on Brazil. You need to implement this project at readme.md to use all functions.
 
