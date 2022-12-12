@@ -6,7 +6,7 @@ import java.util.*
 
 class ValidateInput {
     companion object {
-        private fun clean(input: String): String {
+        fun clean(input: String): String {
             return input.trim().justNumbers().replace(".", "").replace("-", "")
         }
 
@@ -37,15 +37,15 @@ class ValidateInput {
                     }
 
                     r = 11 - sm % 11
-                    if (r == 10 || r == 11) dig10 = '0'
-                    else dig10 = (r + 48).toChar() // Converts respective number char
+                    dig10 = if (r == 10 || r == 11) '0'
+                    else (r + 48).toChar() // Converts respective number char
 
                     // Calculate second validator number
                     sm = 0
                     peso = 11
                     i = 0
                     while (i < 10) {
-                        num = nCpf[i].toInt() - 48
+                        num = nCpf[i].code - 48
                         sm += num * peso
                         peso -= 1
                         i++

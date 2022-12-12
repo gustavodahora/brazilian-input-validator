@@ -12,4 +12,15 @@ class ValidateInputTest {
     fun `if invalid CPF is invalid`() {
         assertFalse(ValidateInput.cpf("111.111.111-11"))
     }
+    @Test
+    fun `clear input string`() {
+        val expected = CLEAR_NUM
+
+        assertEquals(expected, ValidateInput.clean("111.111.111-11"))
+        assertEquals(expected, ValidateInput.clean("111.111.111-11"))
+    }
+
+    companion object {
+        const val CLEAR_NUM = "11111111111"
+    }
 }
