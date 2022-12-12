@@ -6,6 +6,7 @@ At this moment, we finished the setup for a validation at CPF input on Brazil. Y
 ### Android Setup
 
 Step 1. Add the JitPack repository to your build file
+Add it in your root build.gradle at the end of repositories:
 
 ``` Gradle
 allprojects {
@@ -14,9 +15,6 @@ allprojects {
   }
 }
 ```
-
-Add it in your root build.gradle at the end of repositories:
-
 
 Step 2. Add the dependency
 
