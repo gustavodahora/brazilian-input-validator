@@ -37,11 +37,11 @@ ValidateInput.cpf("111.111.111-11") // false
 
 ### Validations Available
 
-`cpf`
+`cpf`, `cnpj`
 
 ### Future Validations
 
-`cnpj`, `randomPix`, `email`, `phone`
+`randomPix`, `email`, `phone`
 
 -----
 
