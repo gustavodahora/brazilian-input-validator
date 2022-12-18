@@ -20,7 +20,7 @@ Step 2. Add the dependency
 
 ``` Gradle
 dependencies {
-  implementation 'com.github.gustavodahora:brazilian-input-validator-library:0.0.1'
+  implementation 'com.github.gustavodahora:brazilian-input-validator-library:0.0.3'
 }
 ```
 
