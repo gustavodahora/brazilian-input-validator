@@ -62,7 +62,7 @@ fun MainScreen(
                 fieldStatus = state.value.cnpj
             )
             Spacer(modifier = Modifier.size(10.dp))
-            Button(onClick = { mainViewModel.validate() }) {
+            Button(onClick = { mainViewModel.startValidation() }) {
                 Text(text = stringResource(id = R.string.validate))
             }
         }

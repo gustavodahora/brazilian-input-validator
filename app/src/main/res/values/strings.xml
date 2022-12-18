@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Input Validator</string>
-    <string name="title_activity_compose">Compose</string>
 
     <string name="cpf">CPF</string>
     <string name="cnpj">CNPJ</string>
