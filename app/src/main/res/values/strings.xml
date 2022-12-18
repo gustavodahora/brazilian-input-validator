@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Input Validator</string>
     <string name="title_activity_compose">Compose</string>
+
+    <string name="cpf">CPF</string>
+    <string name="cnpj">CNPJ</string>
+    <string name="random_pix">Random Pix</string>
+
+    <string name="tf_cnpj_placeholder">Enter your CNPJ</string>
+    <string name="tf_cpf_placeholder">Enter your CPF</string>
+    <string name="tf_random_pix_placeholder">Enter your Random Pix</string>
+
+    <string name="validate">VALIDATE</string>
 </resources>
