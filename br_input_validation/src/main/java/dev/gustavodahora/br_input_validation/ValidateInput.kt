@@ -1,19 +1,26 @@
 package dev.gustavodahora.br_input_validation
 
+import dev.gustavodahora.br_input_validation.util.Cnpj
 import dev.gustavodahora.br_input_validation.util.Cpf
+import dev.gustavodahora.br_input_validation.util.allCharactersSame
 import dev.gustavodahora.br_input_validation.util.justNumbers
 import java.util.*
 
 class ValidateInput {
     companion object {
         fun clean(input: String): String {
-            return input.trim().justNumbers().replace(".", "").replace("-", "")
+            return input
+                .trim()
+                .justNumbers()
+                .replace(".", "")
+                .replace("-", "")
+                .replace("/", "")
         }
 
         fun cpf(cpf: String): Boolean {
             val nCpf = clean(input = cpf)
             try {
-                if (Cpf.allCharactersSame(input = nCpf)) return false
+                if (nCpf.allCharactersSame()) return false
                 if (Cpf.isIncorrectLength(input = nCpf)) return false
 
                 val dig10: Char
@@ -65,8 +72,58 @@ class ValidateInput {
             }
         }
 
-        // TODO CNPJ
-        // TODO CPF
+        fun cnpj(input: String): Boolean {
+            val cnpj = clean(input)
+
+            try {
+                cnpj.toLong()
+            } catch (e: NumberFormatException) {
+                return false
+            }
+
+            if (cnpj.allCharactersSame()) return false
+            if (Cnpj.isNotCorrectLength(cnpj)) return false
+
+            val dig13: Char
+            val dig14: Char
+            var sm: Int
+            var i: Int
+            var r: Int
+            var num: Int
+            var weight: Int
+
+            return try {
+                sm = 0
+                weight = 2
+                i = 11
+                while (i >= 0) {
+                    num = (cnpj[i].code - 48)
+                    sm += num * weight
+                    weight += 1
+                    if (weight == 10) weight = 2
+                    i--
+                }
+                r = sm % 11
+                dig13 = if (r == 0 || r == 1) '0' else (11 - r + 48).toChar()
+
+                sm = 0
+                weight = 2
+                i = 12
+                while (i >= 0) {
+                    num = (cnpj[i].code - 48)
+                    sm += num * weight
+                    weight += 1
+                    if (weight == 10) weight = 2
+                    i--
+                }
+                r = sm % 11
+                dig14 = if (r == 0 || r == 1) '0' else (11 - r + 48).toChar()
+                dig13 == cnpj[12] && dig14 == cnpj[13]
+            } catch (error: InputMismatchException) {
+                false
+            }
+        }
+
         // TODO PIX_RANDOM_KEY
     }
 }
