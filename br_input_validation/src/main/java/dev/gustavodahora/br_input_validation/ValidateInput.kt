@@ -64,7 +64,7 @@ class ValidateInput {
 
                     // Validate if all digits calculated agree with informed digits.
                     return dig10 == nCpf[9] && dig11 == nCpf[10]
-                } catch (error: InputMismatchException) {
+                } catch (e: InputMismatchException) {
                     return false
                 }
             } catch (e: Exception) {
@@ -119,7 +119,7 @@ class ValidateInput {
                 r = sm % 11
                 dig14 = if (r == 0 || r == 1) '0' else (11 - r + 48).toChar()
                 dig13 == cnpj[12] && dig14 == cnpj[13]
-            } catch (error: InputMismatchException) {
+            } catch (e: Exception) {
                 false
             }
         }
