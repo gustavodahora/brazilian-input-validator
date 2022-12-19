@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.text.input.TextFieldValue
 import dev.gustavodahora.napp.view.model.FieldState
 import dev.gustavodahora.napp.view.model.FieldStatus
+import dev.gustavodahora.napp.view.model.FieldToValidate
 import dev.gustavodahora.napp.view.viewModel.MainViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -66,7 +67,21 @@ class MainViewModelTest {
         assertEquals(expectedState.value, mainViewModel.state.value)
     }
 
+    @Test
+    fun `assert only filled fields will be validated`() {
+        mainViewModel.textCpf = TextFieldValue(text = VALID_CNPJ)
+        mainViewModel.textCnpj = TextFieldValue(text = EMPTY_FIELD)
+
+        mainViewModel.setupFieldsToValidate()
+
+        val expected = FieldToValidate(cpf = true, cnpj = null)
+
+        assertEquals(expected, mainViewModel.fieldToValidate)
+    }
+
     companion object {
+        const val EMPTY_FIELD = ""
+
         const val INVALID_CPF = "111.111.111-11"
         const val VALID_CPF = "757.697.100-20"
         const val INVALID_CNPJ = "37.764.222/9284-14"

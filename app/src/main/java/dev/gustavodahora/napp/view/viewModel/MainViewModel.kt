@@ -22,7 +22,7 @@ class MainViewModel : ViewModel() {
 
     var state = mutableStateOf(FieldState())
 
-    private var fieldToValidate = FieldToValidate()
+    var fieldToValidate = FieldToValidate()
 
     private fun validateAfterField() {
         fieldToValidate.apply {
@@ -56,10 +56,14 @@ class MainViewModel : ViewModel() {
     }
 
     fun startValidation() {
+        setupFieldsToValidate()
+        validateAfterField()
+    }
+
+    fun setupFieldsToValidate() {
         fieldToValidate = FieldToValidate()
         if (textCpf.text.isNotEmpty()) fieldToValidate.cpf = true
         if (textCnpj.text.isNotEmpty()) fieldToValidate.cnpj = true
-        validateAfterField()
     }
 
     companion object {
